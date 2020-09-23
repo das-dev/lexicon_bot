@@ -7,7 +7,7 @@ bot = telebot.TeleBot(settings.TELEGRAM_TOKEN, parse_mode=None)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    user = transactions.get_user(user_id=message.from_user.id)):
+    user = transactions.get_user(user_id=message.from_user.id)
     try:
         user or transactions.add_user(user_id=message.from_user.id)
     except transactions.UserNotAddedError:
