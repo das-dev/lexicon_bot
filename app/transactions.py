@@ -1,6 +1,6 @@
 from app import settings
 from app.db.engine import create_engine
-from app.db.gateways import UserTableGateway
+from app.db.gateways import UserTableGateway, CardsTableGateway
 
 db_engine = create_engine(settings.DATABASES['main']['DSN'])
 
@@ -18,3 +18,7 @@ def add_user(user_id):
 
 def get_user(user_id):
     return UserTableGateway(db_engine).find_by_user_id(user_id=user_id)
+
+
+def get_cards(card_ids):
+    return CardsTableGateway(db_engine).find_all()
